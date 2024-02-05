@@ -4,8 +4,12 @@ import tempfile
 import wave
 import os
 import time
+from dotenv import load_dotenv
 
-client = OpenAI(api_key='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')
+# Load environment variables from .env file
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv("API_KEY"))
 
 def transcribe_audio(file_path):
     with open(file_path, "rb") as audio_file:
